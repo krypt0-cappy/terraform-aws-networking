@@ -44,9 +44,9 @@ locals {
 
 data "aws_availability_zones" "available" {}
 
-resource "random_integer" "random" {
-  min = 1
-  max = 99
+resource "random_pet" "random" {
+  # min = 1
+  # max = 99
 }
 
 resource "random_shuffle" "public_az" {
@@ -60,7 +60,7 @@ resource "aws_vpc" "mtc_vpc" {
   enable_dns_support   = true
 
   tags = {
-    Name = "mtc_vpc-${random_integer.random.id}"
+    Name = "mtc_vpc-${random_pet.random.id}"
   }
   lifecycle {
     create_before_destroy = true
